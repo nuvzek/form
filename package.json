@@ -1,0 +1,25 @@
+{
+  "name": "form",
+  "version": "0.0.0",
+  "description": "form",
+  "scripts": {
+    "dev:form": "pnpm --filter @nuvzek/form dev",
+    "build:form": "pnpm --filter @nuvzek/form build",
+    "dev:playground": "pnpm --filter @nuvzek/form-playground dev",
+    "dev:docs": "pnpm --filter docs dev",
+    "dev:server": "pnpm --filter @nuvzek/form-server dev",
+    "build:server": "pnpm --filter @nuvzek/form-server build",
+    "build:app": "pnpm --filter @nuvzek/form-playground build",
+    "build:docs": "pnpm --filter docs build",
+    "changeset": "changeset",
+    "version-packages": "changeset version"
+  },
+  "author": "nuvzek <nuvzek@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@changesets/cli": "^2.28.1"
+  },
+  "dependencies": {
+    "better-auth": "^1.4.1"
+  }
+}

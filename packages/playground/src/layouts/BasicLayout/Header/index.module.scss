@@ -1,0 +1,31 @@
+.header {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  .sysPanel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    .menu {
+      flex: 1;
+    }
+
+    .title {
+      font-size: 19px;
+      font-weight: bold;
+      font-family: "title";
+      background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .userPanel {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "@nuvzek/form",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "type": "module",
+  "types": "./dist/types/index.d.ts",
+  "scripts": {
+    "dev": "nodemon -e .ts,.tsx --ignore dist --exec 'vite build --mode development'",
+    "build": "vue-tsc && vite build",
+    "release": "pnpm build --mode production && pnpm changeset publish"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/"
+  ],
+  "author": "nuvzek <nuvzek@gmail.com>",
+  "repository": "nuvzek/form",
+  "keywords": [
+    "form builder",
+    "vue",
+    "typescript"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@nuvzek/nexus": "workspace:*",
+    "@types/lodash": "^4.17.20",
+    "@vitejs/plugin-vue-jsx": "^4.1.2",
+    "nodemon": "^3.1.9",
+    "vite": "^6.2.2",
+    "vite-plugin-dts": "^4.5.3",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.2.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.13"
+  },
+  "dependencies": {
+    "@changesets/changelog-git": "^0.2.1",
+    "@vue/reactivity": "^3.5.22",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.23",
+    "on-change": "^6.0.1"
+  }
+}

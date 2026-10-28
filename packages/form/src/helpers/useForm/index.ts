@@ -1,0 +1,32 @@
+import { FormContext } from "@/core/context";
+import { SSR } from "@/core/context/types";
+import Runtime from "@/core/runtime";
+import { UseFormOptions } from "@/helpers/useForm/types";
+import { computed } from "vue";
+
+/**
+ * Todo: docs
+ */
+
+export function useForm(options: UseFormOptions) {
+  const runtime = new Runtime(options);
+
+  return [
+    runtime.render(),
+    {
+      submit: runtime.submit.bind(runtime),
+      share: runtime.share.bind(runtime),
+      model: runtime._model.model,
+      schemas: runtime._schema.parsedSchemas,
+      isReady: runtime.isReady.bind(runtime),
+      hydrate: runtime.hydrate.bind(runtime),
+      getFormRef: runtime.getFormRef.bind(runtime),
+      namesToRemember: runtime._options.namesToRemember,
+      getLookupResults: runtime.getLookupResults.bind(runtime),
+      triggerLookup: runtime._model.triggerLookup.bind(runtime._model),
+      updateForm: runtime.updateForm.bind(runtime),
+      // 当前生效的 canonical locale（只读），外部想在表单之外消费同一个 locale 时可以用
+      locale: computed(() => runtime.locale.value),
+    },
+  ];
+}

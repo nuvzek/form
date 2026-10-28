@@ -1,0 +1,37 @@
+{
+  "name": "@nuvzek/form-playground",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@daveyplate/better-auth-ui": "^3.2.13",
+    "@nuvzek/form": "workspace:*",
+    "axios": "^1.13.2",
+    "highlight.js": "^11.11.1",
+    "lodash": "^4.17.21",
+    "marked": "^17.0.1",
+    "monaco-editor": "^0.55.1",
+    "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.7.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@arco-design/web-vue": "^2.57.0",
+    "@iconify/vue": "^5.0.0",
+    "@nuvzek/nexus": "workspace:*",
+    "@types/lodash": "^4.17.20",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue-jsx": "^4.1.2",
+    "@vue/tsconfig": "^0.7.0",
+    "sass": "^1.92.1",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0",
+    "vue-tsc": "^2.2.4"
+  }
+}

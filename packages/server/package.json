@@ -1,0 +1,28 @@
+{
+  "name": "@nuvzek/form-server",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts,tsx --exec vite-node src/index.ts",
+    "build": "vite build",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.14.4",
+    "drizzle-orm": "^0.44.2",
+    "hono": "^4.7.11",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@types/pg": "^8.15.4",
+    "drizzle-kit": "^0.31.4",
+    "esbuild": "^0.25.5",
+    "nodemon": "^3.1.9",
+    "tsx": "^4.20.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.2.2",
+    "vite-node": "^5.0.0",
+    "vite-plugin-dts": "^4.5.3"
+  }
+}
