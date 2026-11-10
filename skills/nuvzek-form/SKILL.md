@@ -1,6 +1,6 @@
 ---
 name: nuvzek-form
-description: Create, integrate, modify, and validate Vue forms with @nuvzek/form. Use for form generation, Schema or dispatch authoring, UI-library initialization and adapters, field linkage, validation, hydration, lists, display values, and server-driven form JSON.
+description: Create, integrate, modify, and validate Vue forms with @nuvzek/form. Use for form generation, Schema or dispatch authoring, UI-library initialization and adapters, field linkage, validation, hydration, lists, display values, internationalization, and server-driven form JSON.
 license: MIT
 compatibility: Requires a Vue 3.5+ project. Node.js is required for bundled scripts. Network access is optional when researching an unfamiliar UI library.
 metadata:
@@ -37,7 +37,7 @@ Do not stop to tell the user to run an `init` command. Complete required initial
 - Use serializable SSR JSON when the user requests JSON, server-driven schemas, or the existing host already uses `ssr`.
 - Never mix imported component objects with string components in one mode, and never put functions, JSX, `raw()`, or `once()` into JSON.
 
-Read [local-schema](references/local-schema.md) or [ssr-schema](references/ssr-schema.md) before generating the corresponding mode. Read [dispatch](references/dispatch.md) for any remote request, condition, event pipeline, state mutation, ref call, or `I18N` action.
+Read [local-schema](references/local-schema.md) or [ssr-schema](references/ssr-schema.md) before generating the corresponding mode. Read [dispatch](references/dispatch.md) for any remote request, condition, event pipeline, state mutation, ref call, or `I18N` action. Read [i18n](references/i18n.md) for any translated content, reactive locale switching, or localized validation.
 
 ## 4. Generate native integrations
 

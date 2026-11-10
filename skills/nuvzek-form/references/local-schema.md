@@ -112,6 +112,10 @@ componentProps: {
 
 Use `once(fn)` to calculate without registering ongoing dependencies. `raw(object)` also prevents deep parsing of objects such as function-based `lookup` configuration.
 
+## Internationalization
+
+For translated labels, placeholders, required messages, options, locale switching, or the `i18n()` helper, read `i18n.md` and use `assets/local-i18n.tsx` as the complete example.
+
 ## Validation
 
 `required: true` creates a native required rule with localized text. `required: "message"` customizes it. Additional rules remain UI-library native:

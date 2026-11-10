@@ -77,7 +77,7 @@ Every string component and custom dispatch action must have a host mapping. Buil
 }
 ```
 
-For other values, use an `I18N` dispatch. Built-in locales are `zh-CN`, `en-US`, and `zh-HK`; hosts can supply `locale`, `localeMap`, `fallbackLocale`, and `messages`.
+For other values, use an `I18N` dispatch. Built-in locales are `zh-CN`, `en-US`, and `zh-HK`; hosts can supply `locale`, `localeMap`, `fallbackLocale`, and `messages`. Read `i18n.md` for reactive switching, fallback rules, custom messages, and verification. See `assets/ssr-i18n.json` for a complete example.
 
 ## Display values
 

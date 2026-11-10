@@ -1,0 +1,34 @@
+[
+  {
+    "component": "Input",
+    "field": "name",
+    "label": { "zh-CN": "姓名", "en-US": "Name", "zh-HK": "姓名" },
+    "required": true
+  },
+  {
+    "component": "Select",
+    "field": "gender",
+    "label": { "zh-CN": "性别", "en-US": "Gender", "zh-HK": "性別" },
+    "required": true,
+    "componentProps": {
+      "options": {
+        "$dispatch": "I18N",
+        "values": {
+          "zh-CN": [
+            { "label": "男", "value": "male" },
+            { "label": "女", "value": "female" }
+          ],
+          "en-US": [
+            { "label": "Male", "value": "male" },
+            { "label": "Female", "value": "female" }
+          ],
+          "zh-HK": [
+            { "label": "男", "value": "male" },
+            { "label": "女", "value": "female" }
+          ]
+        }
+      },
+      "allowClear": true
+    }
+  }
+]

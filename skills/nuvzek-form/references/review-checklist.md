@@ -15,6 +15,7 @@
 - Required fields and native validation match the selected UI library.
 - Conditional hiding does not accidentally imply data deletion.
 - No endpoint, component mapping, event signature, or custom action was invented.
+- Internationalized forms use canonical locale keys, the correct local `i18n()` or SSR `I18N` mechanism, and have been switched between at least two locales.
 
 ## SSR
 

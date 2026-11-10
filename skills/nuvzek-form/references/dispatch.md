@@ -80,7 +80,7 @@ Use `and` or `or` arrays for composition. Conditions are asynchronous and await 
 { "$dispatch": "REFS", "field": "counter", "get": "theRemark" }
 ```
 
-Custom actions such as `ALERT` must exactly match a function registered in `ssr.actions`. Input properties are recursively processed before the action is called.
+Custom actions such as `ALERT` must exactly match a function registered in `ssr.actions`. Each top-level input property is processed for dispatches or dynamic values before the action is called. Do not assume arbitrary nested plain objects are recursively evaluated; use explicit dispatches or handle deep custom structures in the host action.
 
 ## Internationalization
 
