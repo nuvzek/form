@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 
 export default defineConfig({
   lang: "zh-CN",
-  base: "/form-docs/",
+  base: "/form/",
   title: "Nuvzek Form",
   description: "面向 Vue 3 的配置式表单运行时",
   themeConfig: {
