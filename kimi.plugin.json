@@ -1,0 +1,9 @@
+{
+  "name": "nuvzek-form",
+  "version": "0.1.0",
+  "description": "Create, integrate, and validate forms with @nuvzek/form",
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "homepage": "https://github.com/nuvzek/form",
+  "license": "MIT"
+}

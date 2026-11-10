@@ -1,0 +1,30 @@
+[
+  {
+    "component": "Input",
+    "field": "applicantName",
+    "label": "申请人",
+    "required": true,
+    "span": 12
+  },
+  {
+    "component": "Select",
+    "field": "leaveType",
+    "label": "请假类型",
+    "required": true,
+    "span": 12,
+    "componentProps": {
+      "options": [
+        { "label": "事假", "value": "personal" },
+        { "label": "病假", "value": "sick" },
+        { "label": "年假", "value": "annual" }
+      ]
+    }
+  },
+  {
+    "component": "Textarea",
+    "field": "reason",
+    "label": "事由",
+    "required": true,
+    "componentProps": { "rows": 3 }
+  }
+]

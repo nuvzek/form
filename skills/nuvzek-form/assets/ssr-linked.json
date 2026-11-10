@@ -1,0 +1,59 @@
+[
+  {
+    "component": "Select",
+    "field": "department",
+    "label": "部门",
+    "required": true,
+    "componentProps": {
+      "options": {
+        "$dispatch": "GET",
+        "target": "/api/departments",
+        "path": "data",
+        "transform": {
+          "method": "map",
+          "relation": { "id": "value", "name": "label" }
+        }
+      },
+      "onChange": {
+        "$dispatch": "EVENT_HANDLER",
+        "pipes": [
+          { "$dispatch": "SET_MODEL", "field": "approver", "as": "" },
+          {
+            "$dispatch": "SET_SHARED",
+            "field": "approverOptions",
+            "as": {
+              "$dispatch": "GET",
+              "target": "/api/approvers",
+              "path": "data",
+              "params": { "departmentId": "$args.0" },
+              "transform": {
+                "method": "map",
+                "relation": { "id": "value", "name": "label" }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "component": "Select",
+    "field": "approver",
+    "label": "审批人",
+    "required": true,
+    "componentProps": {
+      "options": { "$dispatch": "GET_SHARED", "field": "approverOptions" }
+    }
+  },
+  {
+    "component": "Textarea",
+    "field": "highAmountReason",
+    "label": "高额审批说明",
+    "show": {
+      "$dispatch": "CONDITION",
+      "op": "gt",
+      "left": "$model.amount",
+      "right": 5000
+    }
+  }
+]

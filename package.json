@@ -12,7 +12,9 @@
     "build:app": "pnpm --filter @nuvzek/form-playground build",
     "build:docs": "pnpm --filter docs build",
     "changeset": "changeset",
-    "version-packages": "changeset version"
+    "version-packages": "changeset version",
+    "test:skill": "node --test e2e/tests/*.test.mjs",
+    "e2e:blank": "node e2e/prepare-blank.mjs"
   },
   "author": "nuvzek <nuvzek@gmail.com>",
   "license": "MIT",
