@@ -150,7 +150,11 @@ const [Form, { submit }] = useForm({
 const result = ref("");
 
 async function handleSubmit() {
-  result.value = JSON.stringify(await submit(), null, 2);
+  try {
+    result.value = JSON.stringify(await submit(), null, 2);
+  } catch (errors) {
+    // 校验失败：保留用户输入，并按需展示业务提示
+  }
 }
 </script>
 

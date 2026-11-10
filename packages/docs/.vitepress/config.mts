@@ -5,6 +5,8 @@ export default defineConfig({
   base: "/form/",
   title: "Nuvzek Form",
   description: "面向 Vue 3 的配置式表单运行时",
+  lastUpdated: true,
+  head: [["link", { rel: "icon", type: "image/webp", href: "/form/oasis.webp" }]],
   themeConfig: {
     nav: [
       { text: "开发指南", link: "/articles/guide/getting-started" },
@@ -48,6 +50,19 @@ export default defineConfig({
 
     outline: { label: "本页目录" },
     docFooter: { prev: "上一页", next: "下一页" },
+    search: { provider: "local" },
+    editLink: {
+      pattern: "https://github.com/nuvzek/form/edit/main/packages/docs/:path",
+      text: "在 GitHub 上编辑此页",
+    },
+    lastUpdated: { text: "最后更新" },
+    returnToTopLabel: "返回顶部",
+    sidebarMenuLabel: "文档目录",
+    darkModeSwitchLabel: "切换外观",
+    footer: {
+      message: "基于 MIT 许可证发布",
+      copyright: "Copyright © 2025–2026 Nuvzek",
+    },
     socialLinks: [{ icon: "github", link: "https://github.com/nuvzek/form" }],
   },
 });
