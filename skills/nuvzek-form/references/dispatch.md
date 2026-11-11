@@ -24,6 +24,7 @@ Default markers are `$dispatch`, `$model`, `$shared`, `$res`, `$err`, and `$args
 - `transform.map` copies renamed fields onto each item; it does not remove original fields.
 - `then` runs after `path` and `transform`; `$res.data` reads the `data` property of that processed result. Bare `$res` remains a string.
 - Request `data` is the body; `params` is the query object. Actual HTTP behavior belongs to `ssr.actions`.
+- Missing request actions throw an explicit error. With `strict: true`, `transform.map` throws when the extracted response is not an array; without it, the previous lenient behavior is preserved.
 
 ## Conditions
 

@@ -48,6 +48,8 @@
 - `params` 通常用于查询参数，`data` 通常用于请求体。
 - `path` 使用 lodash.get 风格语法提取响应。
 - `transform.map` 将源字段复制成目标字段，原字段仍会保留。
+- 请求动作未在 `ssr.actions` 注册时会抛出明确错误。
+- 设置 `strict: true` 后，`transform.map` 要求 `path` 处理后的结果为数组，否则抛出 `transform.map expected an array`。未开启时保留宽松行为。
 
 ### 将请求结果写入状态
 

@@ -24,7 +24,7 @@ import {
 import { Ref, ref, isRef, isReactive, watch } from "vue";
 import { usePathTracker } from "@/core/lifecycle/hooks/usePathTracker";
 import { useSSRComponent } from "@/core/lifecycle/hooks/useSSRComponent";
-import { deepTraverse } from "@/core/services/deepTraverse";
+import { deepTraverse, SKIP } from "@/core/services/deepTraverse";
 import { useDispatchHandler } from "@/core/lifecycle/hooks/useDispatchHandler";
 import {
   isDynamicValue,
@@ -58,14 +58,16 @@ export default class Schema {
           visited.add(data);
         }
 
+        if (data === null || data === undefined) return data;
+        if (context.key === "component") {
+          if (isString(data)) return useSSRComponent(data, this.runtime);
+          return SKIP;
+        }
         if (
           this.runtime.ssr.definitions?.dispatch &&
           data[this.runtime.ssr.definitions?.dispatch]
         ) {
           return useDispatchHandler(data, this.runtime);
-        }
-        if (context.key === "component") {
-          return useSSRComponent(data, this.runtime); // 这里的 data 就是 componentName 了， 在 ssr 的情况下
         }
         if (isString(data) && isDynamicValue(data, this.runtime)) {
           return (utils: AnyObject) =>

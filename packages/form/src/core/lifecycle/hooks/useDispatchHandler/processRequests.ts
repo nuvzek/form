@@ -9,11 +9,14 @@ export async function processRequests(
   runtimeInfo?: AnyObject
 ) {
   const action = runtime.ssr.actions[dispatch];
+  if (!action) {
+    throw new Error(`SSR action "${String(dispatch)}" is not registered`);
+  }
 
   const processedParams = processParams(data, utils, runtime, runtimeInfo);
   const processedData = processData(data, utils, runtime, runtimeInfo);
 
-  return await action?.({
+  return await action({
     ...data,
     params: processedParams,
     data: processedData,

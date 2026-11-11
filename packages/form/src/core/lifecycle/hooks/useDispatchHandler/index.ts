@@ -49,7 +49,7 @@ export async function processDispatch(
         // 使用 settimeout 是因为我 form 代码里本身就已经有了 nextTick 的控制，如果直接使用 nextTick 会无法获取最新数据
         let requestRes = data.path ? get(res, data.path) : res;
         if ("transform" in data) {
-          requestRes = processTransform(requestRes, data.transform);
+          requestRes = processTransform(requestRes, data.transform, data.strict);
         }
         setTimeout(() => {
           if ("then" in data) {
@@ -69,7 +69,9 @@ export async function processDispatch(
           processDispatch(data.catch, utils, runtime, {
             [requestErrSymbol]: err,
           });
+          return;
         }
+        throw err;
       });
   }
   if (isConditionDispatch(dispatch)) {

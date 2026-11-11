@@ -170,6 +170,9 @@ export function validateSchema(schema) {
           error(`${path}.${key}`, `${key} 必须是对象`);
         }
       }
+      if (has(data, "strict") && typeof data.strict !== "boolean") {
+        error(`${path}.strict`, "strict 必须是布尔值");
+      }
       if (has(data, "transform")) {
         if (!isObject(data.transform) || data.transform.method !== "map") {
           error(`${path}.transform`, "当前仅支持 transform.method = map");

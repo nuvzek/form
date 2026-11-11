@@ -23,15 +23,16 @@ export interface TraverseContext {
  * @param context 当前节点的上下文
  * @returns 返回新值。
  * - 返回 `SKIP`：跳过子节点遍历。
- * - 返回 `DELETE`：删除此节点。
  * - 返回其他值：用该值替换当前节点。
  */
 export type TraverseHandler = (value: any, context: TraverseContext) => any;
 
+export const SKIP = Symbol("SKIP");
+
 // --- 主函数 ---
 
 /**
- * 深度遍历一个对象或数组，并允许通过 handler "原地" 修改、跳过或删除节点。
+ * 深度遍历一个对象或数组，并允许通过 handler "原地" 修改节点或跳过子树。
  * @param target 要遍历的对象或数组
  * @param handler 在每个节点上调用的处理函数
  * @returns 经过 handler 修改后的原始对象 (in-place)
@@ -54,7 +55,7 @@ export function deepTraverse<T extends object>(
     // 1. 处理数组
     if (Array.isArray(current)) {
       // **关键**：使用标准 for 循环（而不是 forEach），
-      // 因为我们需要在 `DELETE` 操作后安全地修改索引 (index--)。
+      // 因为我们需要在处理节点后安全地控制后续遍历。
       for (let index = 0; index < current.length; index++) {
         const value = current[index];
         const isLeaf = typeof value !== "object" || value === null;
@@ -68,6 +69,7 @@ export function deepTraverse<T extends object>(
 
         const result = handler(value, context);
 
+        if (result === SKIP) continue;
         current[index] = result;
 
         // 如果新值是可遍历的（且未被跳过），则递归
@@ -94,6 +96,7 @@ export function deepTraverse<T extends object>(
         // --- 调用 Handler 并处理结果 ---
         const result = handler(value, context);
 
+        if (result === SKIP) continue;
         // 原地替换
         current[key] = result;
 

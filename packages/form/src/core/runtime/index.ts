@@ -135,7 +135,7 @@ export default class Runtime {
     );
   }
 
-  getLookupResults(): ComputedRef<Map<string, any>>;
+  getLookupResults(): ComputedRef<any[]>;
   getLookupResults(path: string): ComputedRef<any>;
   getLookupResults(path?: string): ComputedRef<any> {
     // 不传 path，返回全量
