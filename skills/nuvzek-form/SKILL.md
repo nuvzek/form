@@ -20,6 +20,32 @@ Ask at most one to three questions only when an answer changes data correctness 
 
 Images may guide fields, grouping, order, and layout. Do not infer unseen API contracts or validation behavior from an image.
 
+### Decision order
+
+1. Use the current page, existing template, and installed UI library whenever they answer the question.
+2. Infer ordinary fields, components, grouping, validation, and layout from the requested business purpose. Do not make the user design each field.
+3. If the user names a UI library, honor it and initialize it automatically. If the project already has one and the user expresses no preference, reuse it.
+4. Default to a working local page. Only choose SSR JSON when requested or clearly implied by the host.
+5. Use static options when no API is supplied; never invent an endpoint.
+
+### Guide only genuinely vague requests
+
+If a request such as “create a form” lacks enough context, ask **one compact** follow-up containing at most one to three missing decisions:
+
+- **Business purpose / 表单用途**: employee onboarding, registration, procurement, or a short field description.
+- **UI library**: current project library, Element Plus, Arco, Naive UI, or another named library.
+- **Deliverable**: working page in the current project or SSR JSON only.
+
+Do not repeat a decision the user already made. A request such as “use Element Plus to create an employee onboarding form” is complete: proceed without another questionnaire. If only the business purpose is missing, ask only for that.
+
+Useful user prompts to support:
+
+- “Create an employee onboarding form in this Vue project.”
+- “Use Element Plus for an expense approval form with a receipt list. Initialize and verify everything.”
+- “Add phone, verification code, and password confirmation to registration.”
+- “Generate only SSR JSON for a leave application.”
+- “Use this screenshot as layout guidance and identify business rules that remain uncertain.”
+
 ## 2. Ensure the project is ready automatically
 
 1. Detect the package manager from `packageManager` and lockfiles. Use the existing manager.

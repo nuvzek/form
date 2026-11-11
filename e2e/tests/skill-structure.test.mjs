@@ -60,6 +60,19 @@ test("keeps the blank fixture free of Form and UI dependencies", () => {
   }
 });
 
+test("provides guided onboarding and concrete prompts in the README", () => {
+  const readme = readFileSync(new URL("README.md", root), "utf8");
+  const skill = readFileSync(new URL("SKILL.md", skillRoot), "utf8");
+
+  assert.match(readme, /\/plugins install https:\/\/github.com\/nuvzek\/form/);
+  assert.match(readme, /https:\/\/nuvzek.github.io\/form\//);
+  assert.match(readme, /Quick prompts|提问示例/);
+  assert.match(readme, /SSR JSON/);
+  assert.match(readme, /员工入职|employee onboarding/i);
+  assert.match(skill, /business purpose|表单用途/);
+  assert.match(skill, /one compact|最多/);
+});
+
 test("provides a Kimi plugin wrapper without moving the portable skill", () => {
   const manifestPath = new URL("kimi.plugin.json", root);
   assert.ok(existsSync(manifestPath), "kimi.plugin.json must exist");
