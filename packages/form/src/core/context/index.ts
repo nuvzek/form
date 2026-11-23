@@ -7,6 +7,7 @@ import { keyBy } from "lodash";
 import { SSR } from "@/core/context/types";
 
 export class FormContext {
+  static debug = false;
   static context: DefineFormSetupOptions;
   static templateById: Record<
     string,

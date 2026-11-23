@@ -13,6 +13,9 @@ Important options:
 - `collectDisplayValues`: include labels/display entries in submission.
 - `noAutoLookup`: disable automatic lookup processing.
 - `locale`, `localeMap`, `fallbackLocale`, `messages`: internationalization.
+- `debug`: opt into Runtime debug event recording for development tooling.
+
+Use `getRuntime()` to access the current Runtime for development diagnostics. `setDebug(false)` stops recording and clears the event log. DevTools live in the separate `@nuvzek/devtools` package and should be loaded conditionally in development.
 
 The returned tuple contains the Vue Form component and controls:
 

@@ -5,6 +5,7 @@
   "scripts": {
     "dev:form": "pnpm --filter @nuvzek/form dev",
     "build:form": "pnpm --filter @nuvzek/form build",
+    "build:devtools": "pnpm --filter @nuvzek/devtools build",
     "dev:playground": "pnpm --filter @nuvzek/form-playground dev",
     "dev:docs": "pnpm --filter docs dev",
     "dev:server": "pnpm --filter @nuvzek/form-server dev",

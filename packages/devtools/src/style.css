@@ -1,0 +1,260 @@
+.form-devtools {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  display: flex;
+  overflow: hidden;
+  width: min(460px, calc(100vw - 40px));
+  max-height: 72vh;
+  border: 1px solid #d9e5df;
+  border-radius: 14px;
+  background: #fbfcfb;
+  color: #17211e;
+  box-shadow: 0 16px 40px rgb(23 58 49 / 16%);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  flex-direction: column;
+}
+
+.fdt-launcher {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  padding: 10px 14px;
+  border: 1px solid #d9e5df;
+  border-radius: 10px;
+  background: #fbfcfb;
+  color: #0f766e;
+  box-shadow: 0 8px 24px rgb(23 58 49 / 12%);
+  font: 600 13px/1.2 inherit;
+  cursor: pointer;
+}
+
+.fdt-header,
+.fdt-title,
+.fdt-actions,
+.fdt-section-actions,
+.fdt-event-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.fdt-header {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e2ebe6;
+}
+
+.fdt-title strong {
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+
+.fdt-title span {
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: #e4f2ed;
+  color: #0f766e;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.fdt-actions button,
+.fdt-section-actions button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #0f766e;
+  font: 600 12px/1.5 inherit;
+  cursor: pointer;
+}
+
+.fdt-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #e2ebe6;
+}
+
+.fdt-tabs button {
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #4b5c56;
+  font: 600 12px/1.4 inherit;
+  cursor: pointer;
+}
+
+.fdt-tabs button.active {
+  background: #e4f2ed;
+  color: #0f766e;
+}
+
+.fdt-content {
+  overflow: auto;
+}
+
+.fdt-section {
+  padding: 14px;
+}
+
+.fdt-section h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.fdt-section h3:not(:first-child) {
+  margin-top: 18px;
+}
+
+.form-devtools pre {
+  overflow: auto;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #e2ebe6;
+  border-radius: 9px;
+  background: #f3f7f5;
+  color: #263b34;
+  font: 11px/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.fdt-section pre {
+  max-height: 240px;
+}
+
+.fdt-empty {
+  margin: 0;
+  color: #4b5c56;
+  line-height: 1.7;
+}
+
+.fdt-list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.fdt-list li {
+  min-width: 0;
+}
+
+.fdt-list li > code,
+.fdt-list li > small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.fdt-list li > small {
+  margin-top: 3px;
+  color: #4b5c56;
+}
+
+.fdt-kind,
+.fdt-status {
+  color: #0f766e;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.fdt-events li {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2ebe6;
+}
+
+.fdt-events li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.fdt-events li[data-status="rejected"] .fdt-status {
+  color: #b91c1c;
+}
+
+.fdt-events li[data-status="pending"] .fdt-status {
+  color: #a16207;
+}
+
+.fdt-events li > pre {
+  margin-top: 6px;
+  max-height: 160px;
+}
+
+.fdt-section-actions {
+  margin-bottom: 12px;
+  color: #4b5c56;
+  font-size: 12px;
+}
+
+.form-devtools button:focus-visible,
+.fdt-launcher:focus-visible {
+  outline: 3px solid #0f766e;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .form-devtools {
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 80vh;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .fdt-tabs {
+    overflow-x: auto;
+  }
+
+  .fdt-header {
+    padding: 10px 12px;
+  }
+
+  .fdt-actions {
+    gap: 8px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .form-devtools,
+  .fdt-launcher {
+    border-color: #2b3c36;
+    background: #101715;
+    color: #ecf5f1;
+  }
+
+  .fdt-header,
+  .fdt-tabs,
+  .fdt-events li {
+    border-color: #2b3c36;
+  }
+
+  .fdt-title span,
+  .fdt-tabs button.active {
+    background: #18372f;
+  }
+
+  .fdt-tabs button,
+  .fdt-empty,
+  .fdt-section-actions,
+  .fdt-list li > small {
+    color: #a9bcb4;
+  }
+
+  .form-devtools pre {
+    border-color: #2b3c36;
+    background: #151e1b;
+    color: #d7e8e0;
+  }
+}

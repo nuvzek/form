@@ -19,6 +19,7 @@ app
   .use(initForm, {
     loader: () => import("@/configs/form-setup"),
     env: "web",
+    debug: import.meta.env.DEV,
   })
   .use(pinia)
   .use(router)

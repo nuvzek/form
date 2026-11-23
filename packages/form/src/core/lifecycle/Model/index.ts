@@ -27,6 +27,7 @@ export default class Model {
   model = ref<Record<string, any>>(
     onChange({}, (path, value) => {
       if (this.pauseOnChange) return;
+      this.runtime.recordDebug({ kind: "model", status: "change", path, detail: { value } });
       this.runtime._update.trigger("model", path);
       if (!this.runtime._options.noAutoLookup) {
         useLookupProcess(path, value, this.runtime);

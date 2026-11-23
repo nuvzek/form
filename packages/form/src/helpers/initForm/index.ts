@@ -4,6 +4,7 @@ import { InitFormOptions } from "@/helpers/initForm/types";
 export const initForm = {
   install(app: any, options: InitFormOptions) {
     const { loader } = options;
+    FormContext.debug = options.debug ?? false;
     if (!loader) {
       throw new Error("loader is required.");
     }

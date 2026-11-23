@@ -1,4 +1,5 @@
 import Adapter from "@/core/adapter";
+import { FormDebugEvent } from "@/core/debug/types";
 import { FormContext } from "@/core/context";
 import { SSR } from "@/core/context/types";
 import Model from "@/core/lifecycle/Model";
@@ -42,7 +43,8 @@ export default class Runtime {
   public _options: UseFormOptions;
   public _context: FormContext;
   public _adapter: Adapter;
-  public shared = onChange({}, (path) => {
+  public shared = onChange({}, (path, value) => {
+    this.recordDebug({ kind: "share", status: "change", path, detail: { value } });
     this._update.trigger("share", path);
   });
   public isSsr = false;
@@ -57,6 +59,22 @@ export default class Runtime {
   };
   public lookups: Ref<Map<string, any>> = ref(new Map());
   public lookupResults: Ref<Map<string, any>> = ref(new Map());
+  public debugEvents: Ref<FormDebugEvent[]> = ref([]);
+  public debugEnabled = false;
+  private debugId = 0;
+
+  setDebug(enabled: boolean) {
+    this.debugEnabled = enabled;
+    if (!enabled) this.debugEvents.value = [];
+  }
+
+  recordDebug(event: Omit<FormDebugEvent, "id" | "timestamp">) {
+    if (!this.debugEnabled) return;
+    this.debugEvents.value = [
+      { ...event, id: ++this.debugId, timestamp: Date.now() },
+      ...this.debugEvents.value,
+    ].slice(0, 50);
+  }
 
   public locale: Ref<string> = ref(DEFAULT_LOCALE);
   public fallbackLocale: string = DEFAULT_LOCALE;
@@ -65,6 +83,7 @@ export default class Runtime {
 
   constructor(options: UseFormOptions) {
     this._options = options;
+    this.debugEnabled = options.debug ?? FormContext.debug;
     this.processSSR(options);
     this._context = FormContext;
     this._model = new Model(this);
@@ -107,6 +126,7 @@ export default class Runtime {
           const next = resolve(raw);
           if (next === this.locale.value) return;
           this.locale.value = next;
+          this.recordDebug({ kind: "locale", status: "change", path: "locale", detail: { value: next } });
           this._update.trigger("locale", "locale");
         }
       );

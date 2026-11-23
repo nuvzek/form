@@ -21,6 +21,7 @@ export function useForm(options: UseFormOptions) {
       isReady: runtime.isReady.bind(runtime),
       hydrate: runtime.hydrate.bind(runtime),
       getFormRef: runtime.getFormRef.bind(runtime),
+      getRuntime: () => runtime,
       namesToRemember: runtime._options.namesToRemember,
       getLookupResults: runtime.getLookupResults.bind(runtime),
       triggerLookup: runtime._model.triggerLookup.bind(runtime._model),
@@ -30,3 +31,11 @@ export function useForm(options: UseFormOptions) {
     },
   ];
 }
+
+export type {
+  FormDebugEvent,
+  FormDebugKind,
+  FormDebugStatus,
+  FormRuntime,
+  UseFormOptions,
+} from "./types";

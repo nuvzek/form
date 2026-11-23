@@ -16,11 +16,35 @@ export async function processRequests(
   const processedParams = processParams(data, utils, runtime, runtimeInfo);
   const processedData = processData(data, utils, runtime, runtimeInfo);
 
-  return await action({
-    ...data,
-    params: processedParams,
-    data: processedData,
+  runtime.recordDebug({
+    kind: "request",
+    status: "pending",
+    path: `${String(dispatch)} ${data.target}`,
+    detail: { params: processedParams, data: processedData },
   });
+
+  try {
+    const response = await action({
+      ...data,
+      params: processedParams,
+      data: processedData,
+    });
+    runtime.recordDebug({
+      kind: "request",
+      status: "fulfilled",
+      path: `${String(dispatch)} ${data.target}`,
+      detail: { response },
+    });
+    return response;
+  } catch (error) {
+    runtime.recordDebug({
+      kind: "request",
+      status: "rejected",
+      path: `${String(dispatch)} ${data.target}`,
+      detail: { error },
+    });
+    throw error;
+  }
 }
 
 function processParams(

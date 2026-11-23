@@ -44,6 +44,7 @@ export default defineConfig({
           { text: "国际化", link: "/articles/guide/internationalization" },
           { text: "展示值与 Lookup", link: "/articles/guide/display-values" },
           { text: "常见问题", link: "/articles/guide/troubleshooting" },
+          { text: "Form DevTools", link: "/articles/guide/devtools" },
         ],
       },
     ],

@@ -41,6 +41,27 @@ importers:
         specifier: 2.0.0-alpha.12
         version: 2.0.0-alpha.12(@types/node@22.13.11)(axios@1.13.2)(postcss@8.5.6)(sass@1.92.1)(tsx@4.20.6)(typescript@5.9.3)
 
+  packages/devtools:
+    devDependencies:
+      '@nuvzek/form':
+        specifier: workspace:*
+        version: link:../form
+      '@vitejs/plugin-vue-jsx':
+        specifier: ^4.1.2
+        version: 4.1.2(vite@6.2.2(@types/node@22.13.11)(sass@1.92.1)(tsx@4.20.6))(vue@3.5.13(typescript@5.9.3))
+      vite:
+        specifier: ^6.2.2
+        version: 6.2.2(@types/node@22.13.11)(sass@1.92.1)(tsx@4.20.6)
+      vite-plugin-dts:
+        specifier: ^4.5.3
+        version: 4.5.3(@types/node@22.13.11)(rollup@4.52.4)(typescript@5.9.3)(vite@6.2.2(@types/node@22.13.11)(sass@1.92.1)(tsx@4.20.6))
+      vue:
+        specifier: ^3.5.13
+        version: 3.5.13(typescript@5.9.3)
+      vue-tsc:
+        specifier: ^2.2.4
+        version: 2.2.8(typescript@5.9.3)
+
   packages/form:
     dependencies:
       '@changesets/changelog-git':
@@ -94,6 +115,9 @@ importers:
       '@nuvzek/form':
         specifier: workspace:*
         version: link:../form
+      '@nuvzek/devtools':
+        specifier: workspace:*
+        version: link:../devtools
       axios:
         specifier: ^1.13.2
         version: 1.13.2

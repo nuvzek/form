@@ -29,6 +29,12 @@ export default class Update {
         if (effectItem.trackingType !== type) continue;
         if (!effectItem.trackingPath.includes(path)) continue;
 
+        this.runtime.recordDebug({
+          kind: "update",
+          status: "change",
+          path: effectItem.trackingPath,
+          detail: { source: type, effectKey: effectItem.effectKey },
+        });
         effectItem.trackedEffect(type);
       }
     }

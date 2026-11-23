@@ -2,7 +2,11 @@ import { SSR } from "@/core/context/types";
 import { LocaleMap } from "@/core/i18n";
 import { LocaleMessages } from "@/core/i18n/messages";
 import { RawSchemas } from "@/helpers/defineFormSchema/types";
+import Runtime from "@/core/runtime";
 import { MaybeRefOrGetter } from "vue";
+
+export type FormRuntime = Runtime;
+export type { FormDebugEvent, FormDebugKind, FormDebugStatus } from "@/core/debug/types";
 
 export type UseFormOptions = {
   templateId?: string;
@@ -18,6 +22,7 @@ export type UseFormOptions = {
   ssr?: SSR;
   namesToRemember?: Record<string, string>;
   collectDisplayValues?: boolean;
+  debug?: boolean;
   /**
    * 外部的响应式 locale 来源，支持普通值 / ref / computed / getter 函数，
    * 例如 () => store.locale、storeToRefs(store).locale、vue-i18n 的 locale 等
