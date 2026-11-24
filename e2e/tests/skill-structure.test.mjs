@@ -13,12 +13,12 @@ const requiredFiles = [
   "references/adapter-discovery.md",
   "references/i18n.md",
   "references/review-checklist.md",
-  "assets/local-basic.tsx",
-  "assets/local-dependent.tsx",
-  "assets/local-i18n.tsx",
-  "assets/ssr-basic.json",
-  "assets/ssr-linked.json",
-  "assets/ssr-i18n.json",
+  "references/examples/local-basic.tsx",
+  "references/examples/local-dependent.tsx",
+  "references/examples/local-i18n.tsx",
+  "references/examples/ssr-basic.json",
+  "references/examples/ssr-linked.json",
+  "references/examples/ssr-i18n.json",
   "scripts/validate-ssr-schema.mjs",
 ];
 

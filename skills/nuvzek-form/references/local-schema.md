@@ -114,7 +114,7 @@ Use `once(fn)` to calculate without registering ongoing dependencies. `raw(objec
 
 ## Internationalization
 
-For translated labels, placeholders, required messages, options, locale switching, or the `i18n()` helper, read `i18n.md` and use `assets/local-i18n.tsx` as the complete example.
+For translated labels, placeholders, required messages, options, locale switching, or the `i18n()` helper, read `i18n.md` and use `examples/local-i18n.tsx` as the complete example.
 
 ## Validation
 
@@ -135,5 +135,5 @@ This example is Arco-specific. Check the selected library before using it elsewh
 
 ## Reference assets
 
-- `assets/local-basic.tsx`: static fields and a list.
-- `assets/local-dependent.tsx`: dynamic visibility, native events, and cross-field validation.
+- `examples/local-basic.tsx`: static fields and a list.
+- `examples/local-dependent.tsx`: dynamic visibility, native events, and cross-field validation.
