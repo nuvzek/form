@@ -25,8 +25,8 @@ Images may guide fields, grouping, order, and layout. Do not infer unseen API co
 1. Use the current page, existing template, and installed UI library whenever they answer the question.
 2. Infer ordinary fields, components, grouping, validation, and layout from the requested business purpose. Do not make the user design each field.
 3. If the user names a UI library, honor it and initialize it automatically. If the project already has one and the user expresses no preference, reuse it.
-4. Default to a working local page. Only choose SSR JSON when requested or clearly implied by the host.
-5. Use static options when no API is supplied; never invent an endpoint.
+4. Default to a working local page. Choose SSR JSON when requested, clearly implied by the host, or implied by a need to manage the form structure remotely.
+5. Use static options when no API is supplied; never invent an external endpoint. An explicit full-stack request authorizes creating the necessary endpoints in the project's server stack.
 
 ### Guide only genuinely vague requests
 
@@ -54,6 +54,7 @@ Useful user prompts to support:
 4. If the user explicitly selects a missing UI library, adding it is part of the requested integration. Otherwise do not introduce an unrelated UI dependency.
 5. Reuse complete setup, complete partial setup, and create missing setup. Initialization must be idempotent.
 6. For an unfamiliar UI library, follow [adapter-discovery](references/adapter-discovery.md). Prefer installed source/types and project usage over web examples. Use version-matched official documentation when web access exists. If no research capability exists, continue with local evidence and request a minimal native example only when blocked.
+7. For an explicit full-stack request, implement the endpoints the form actually needs. Use the existing server stack and conventions when present; otherwise choose the smallest conventional setup and state the choice. Keep response shapes, request payloads, and error behavior consistent with the Schema and host actions, and exercise the real endpoints. Do not fabricate integration with an unrequested external service.
 
 Do not stop to tell the user to run an `init` command. Complete required initialization as part of form creation.
 
@@ -61,6 +62,7 @@ Do not stop to tell the user to run an `init` command. Complete required initial
 
 - Default to local TypeScript/TSX for a page or component in a Vue project.
 - Use serializable SSR JSON when the user requests JSON, server-driven schemas, or the existing host already uses `ssr`.
+- Treat requests to configure fields from a backend, change fields without changing or redeploying the frontend, deliver form definitions from a server, or build a JSON-driven or low-code form as server-driven intent even when the user never says “SSR.” Users do not need to know implementation terminology; infer the mode from the requested behavior rather than keyword matching alone.
 - Never mix imported component objects with string components in one mode, and never put functions, JSX, `raw()`, or `once()` into JSON.
 
 Read [local-schema](references/local-schema.md) or [ssr-schema](references/ssr-schema.md) before generating the corresponding mode. Read [dispatch](references/dispatch.md) for any remote request, condition, event pipeline, state mutation, ref call, or `I18N` action. Read [i18n](references/i18n.md) for any translated content, reactive locale switching, or localized validation.
